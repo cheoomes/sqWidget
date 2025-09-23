@@ -20,7 +20,6 @@ export async function getEstimate() {
             }),
         });
 
-        console.log(energy.usage);
         const data = await response.json();
 
         console.log(data);

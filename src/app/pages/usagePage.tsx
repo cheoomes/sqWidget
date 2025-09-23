@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../media/usagePage.css";
 
 function usage() {
-    const [usage, setUsage] = useState(350);
+    const [usage, setUsage] = useState(4200);
     const [cost, setCost] = useState<number | null>(null);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ function usage() {
             <h2>Energy Information</h2>
 
             <div className="form-group">
-                <label>Monthly Energy Usage (kWh) </label>
+                <label>Anual energy consumption (kWh) </label>
                 <input
                     type="number"
                     value={usage}

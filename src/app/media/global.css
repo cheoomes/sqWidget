@@ -10,7 +10,7 @@ body {
     font-size: 15px;
     background-color: var(--bg);
     color: #111;
-    overflow: hidden; /* scroll, default */
+    /* overflow: hidden; scroll, default */
 }
 
 :root {
