@@ -22,15 +22,24 @@ function Results() {
     const [loading, setLoading] = useState(true);
     const [result, setResult] = useState<any>(null);
 
+    //loading lead data
     const energyData = localStorage.getItem("energyData");
-    if (!energyData) throw new Error();
+    const mapCenter = localStorage.getItem("mapCenter");
 
+    if (!energyData || !mapCenter) {
+        throw new Error();
+    }
     const energy = JSON.parse(energyData);
+    const location = JSON.parse(mapCenter);
 
     useEffect(() => {
         const fetchDate = async () => {
             try {
-                const estimate = await getEstimate();
+                const estimate = await getEstimate(
+                    energy.usage,
+                    location.lat,
+                    location.lng
+                );
                 console.log(estimate);
                 setResult(estimate);
             } catch (err: any) {
@@ -51,6 +60,7 @@ function Results() {
         );
     }
 
+    console.log(result.irradiance);
     // transform irradiance object into array for Recharts
     const monthlyData = result.irradiance.slice(0, 12);
     const avgData = result.irradiance.slice(12)[0].irradiance;
@@ -61,6 +71,8 @@ function Results() {
     //         month,
     //         irradiance: value,
     //     }));
+
+    const quote = energy.usage / 365 / avgData;
 
     return (
         <div className="resultsPage">
@@ -133,7 +145,7 @@ function Results() {
                     </span>
                 </span>
                 <span className="equals">
-                    = {(energy.usage / 365 / avgData).toFixed(2)} kw size system
+                    = {quote.toFixed(2)} kw size system
                 </span>
             </div>
             we should be able to do this for 16.000 - 18.000 $
@@ -141,8 +153,14 @@ function Results() {
                 this calculation has assumed a system loss of 80% and has not
                 taken the angle of the roof, seasons and shadding into account
                 (important things), you should deffinetly speak to one of our
-                experts for more help:
-                <LeadForm />
+                experts for more help:{" "}
+                <LeadForm
+                    lng={location.lng}
+                    lat={location.lat}
+                    quote={quote}
+                    energyConsumption={energy.usage}
+                    bill={energy.cost}
+                />
             </div>
         </div>
     );

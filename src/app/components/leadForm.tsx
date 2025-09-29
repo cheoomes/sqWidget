@@ -1,14 +1,27 @@
 import React, { useState } from "react";
+import { createLead } from "../services/createLead";
 
-function LeadForm() {
+//adress
+type LeadFormProps = {
+    lng: number;
+    lat: number;
+    quote: number;
+    energyConsumption: number;
+    bill: number;
+};
+
+export default function LeadForm({
+    lng,
+    lat,
+    quote,
+    energyConsumption,
+    bill,
+}: LeadFormProps) {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         phone: "",
     });
-
-    const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState<string | null>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -17,27 +30,16 @@ function LeadForm() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
-        setMessage(null);
 
-        try {
-            const response = await fetch("/api/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            });
+        await createLead({
+            ...formData,
+            location: `${lat},${lng}`,
+            quote,
+            energyConsumption,
+            bill,
+        });
 
-            if (!response.ok) {
-                throw new Error("Failed to submit form");
-            }
-
-            setMessage("✅ Form submitted successfully!");
-            setFormData({ name: "", email: "", phone: "" }); // clear form
-        } catch (err: any) {
-            setMessage("❌ Error: " + err.message);
-        } finally {
-            setLoading(false);
-        }
+        setFormData({ name: "", email: "", phone: "" }); // clear form
     };
 
     return (
@@ -79,14 +81,7 @@ function LeadForm() {
                     placeholder="+1 234 567 890"
                 />
             </div>
-
-            <button type="submit" disabled={loading}>
-                {loading ? "Submitting..." : "Submit"}
-            </button>
-
-            {message && <p className="form-message">{message}</p>}
+            <button type="submit">Submit</button>
         </form>
     );
 }
-
-export default LeadForm;
