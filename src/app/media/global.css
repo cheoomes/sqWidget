@@ -2,6 +2,14 @@
 @import "tailwindcss/preflight";
 @tailwind utilities;
 
+:root {
+    --progress-color: #00a863;
+    --bg: #fff;
+    --navy-text: #1c346e;
+    --gray: #e5e7eb;
+    --text: black;
+}
+
 body {
     margin: 0;
     padding: 0;

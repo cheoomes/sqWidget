@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto, Work_Sans } from "next/font/google";
-import "./media/global.css";
+//import "./media/global.css";
 
 const roboto = Roboto({
     subsets: ["latin"],

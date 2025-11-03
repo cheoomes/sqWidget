@@ -8,6 +8,10 @@ import { useEffect, useState } from "react";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import Usage from "./pages/usagePage";
 import Results from "./pages/resultsPage";
+import SolarWidgetLanding from "./pages/pitchPage";
+import { getSettings } from "./services/getSettings";
+
+import styles from "./media/widget.module.css";
 
 const Home = () => {
     //the paging var's
@@ -20,7 +24,7 @@ const Home = () => {
     const totalSteps = mesages.length;
 
     useEffect(() => {
-        console.log(`Count has been updated to: ${step}`);
+        getSettings();
     }, []);
 
     const stepUpdate = (newValue: number) => {
@@ -28,11 +32,11 @@ const Home = () => {
     };
 
     return (
-        <div className="widget">
-            <p>
+        <div className={styles.widget}>
+            {/* <p>
                 get an online solar quotation (estimate) within 30sec (no email
                 or phonenumber requird)
-            </p>
+            </p> */}
             {/* <div className="progress-content"> */}
             <ProgressBar
                 step={step}
@@ -42,8 +46,10 @@ const Home = () => {
 
             {/* page */}
             <div className="pages">
+                {step === 0 ? <SolarWidgetLanding /> : null}
+
                 <LoadScript
-                    // only load it once
+                    // only load it once - only in if.
                     googleMapsApiKey={
                         process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!
                     }
@@ -56,8 +62,9 @@ const Home = () => {
 
                 {step === 3 ? <Results /> : null}
             </div>
-            <ProgressBtns step={step} stepUpdate={stepUpdate} />
-            {/* </div> */}
+            {step !== 0 ? (
+                <ProgressBtns step={step} stepUpdate={stepUpdate} />
+            ) : null}
         </div>
     );
 };
