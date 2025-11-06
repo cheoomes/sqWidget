@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../media/usagePage.css";
+//import "../media/usagePage.css";
 
 function usage() {
     const [usage, setUsage] = useState(4200);

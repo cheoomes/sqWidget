@@ -1,4 +1,5 @@
 "use client";
+import "@/app/media/widget2.css";
 
 import SearchMap from "./pages/mapPage";
 import ProgressBar from "./components/progressBar";
@@ -46,7 +47,7 @@ const Home = () => {
 
             {/* page */}
             <div className="pages">
-                {step === 0 ? <SolarWidgetLanding /> : null}
+                {/* {step === 0 ? <SolarWidgetLanding /> : null} */}
 
                 <LoadScript
                     // only load it once - only in if.
@@ -55,7 +56,7 @@ const Home = () => {
                     }
                     libraries={["places"]}
                 >
-                    {step === 1 ? <SearchMap /> : null}
+                    {step === 1 ? <SolarWidgetLanding /> : null}
                 </LoadScript>
 
                 {step === 2 ? <Usage /> : null}

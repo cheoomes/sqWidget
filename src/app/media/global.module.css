@@ -2,13 +2,13 @@
 @import "tailwindcss/preflight";
 @tailwind utilities;
 
-:root {
+/* :root {
     --progress-color: #00a863;
     --bg: #fff;
     --navy-text: #1c346e;
     --gray: #e5e7eb;
     --text: black;
-}
+} */
 
 body {
     margin: 0;
@@ -21,7 +21,7 @@ body {
     /* overflow: hidden; scroll, default */
 }
 
-:root {
+/* :root {
     --foreground-rgb: 0, 0, 0;
     --background-start-rgb: 214, 219, 220;
     --background-end-rgb: 255, 255, 255;
@@ -33,7 +33,7 @@ body {
         --background-start-rgb: 0, 0, 0;
         --background-end-rgb: 0, 0, 0;
     }
-}
+} */
 
 h2 {
     font-family: "Roboto";

@@ -16,7 +16,7 @@ import {
 
 import LeadForm from "../components/leadForm";
 
-import "../media/results.css";
+//import "../media/results.css";
 
 function Results() {
     const [loading, setLoading] = useState(true);

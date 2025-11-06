@@ -2,8 +2,8 @@ import { HomeIcon, CogIcon, UserIcon } from "@heroicons/react/24/outline";
 
 import Progress from "./progress";
 
-import "../media/global.css";
-import "../media/widget.css";
+//import "../media/global.css";
+//import "../media/widget.css";
 
 interface ProgressBarProps {
     step: number;

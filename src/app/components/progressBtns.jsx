@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import "../media/widget.css";
+//import "../media/widget.css";
 
 function ProgressBtns({ step, stepUpdate }) {
     function prevStep() {
