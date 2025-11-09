@@ -22,8 +22,23 @@ export async function getSettings() {
 
         const root = document.documentElement;
 
-        root.style.setProperty("--primary-color", data.primaryColor);
-        root.style.setProperty("--font-size", data.fontSize);
-        root.style.setProperty("--padding", data.padding || "12px");
+        root.style.setProperty("--background-color", data.backgroundColor);
+        root.style.setProperty("--progress-color", data.progresColor);
+        root.style.setProperty(
+            "--progress-shadow-color",
+            data.progresShadowColor
+        );
+        root.style.setProperty("--text-color", data.textColor);
+        root.style.setProperty("--light-text-color", data.LightTextColor);
+        root.style.setProperty(
+            "--show-avg-line",
+            data.showAvgLine ? "true" : "false"
+        );
+        if (data.logo) {
+            root.style.setProperty(
+                "--logo",
+                `url(data:image/png;base64,${data.logo})`
+            );
+        }
     }
 }

@@ -1,0 +1,93 @@
+.solar-landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: space-between;
+    padding: 2rem;
+
+    width: 100%;
+}
+
+.content {
+    text-align: center;
+    max-width: 40rem;
+    flex: 1;
+}
+
+.hero-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--light-text-color);
+    margin-bottom: 4rem;
+}
+
+.search-bar {
+    display: flex;
+    width: 100%;
+    max-width: 32rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.search-bar > div {
+    flex-grow: 1;
+    display: flex;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-input::placeholder {
+    color: var(--text-color);
+}
+
+.search-button {
+    background-color: var(--progress-color); /* green-600 */
+    color: var(--background-color);
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.search-button:hover {
+    background-color: color-mix(in srgb, var(--progress-color) 80%, black);
+}
+
+.footer {
+    flex: 1;
+
+    /* background-color: var(--progress-shadow-color); */
+}
+
+.trust-indicators {
+    margin-top: 30px;
+    margin-left: 5px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    align-items: center;
+    justify-content: middle;
+
+    gap: 0.5rem;
+
+    font-size: 0.875rem;
+    color: var(--light-text-color);
+}
+
+.indicator {
+    margin-right: 50px;
+}

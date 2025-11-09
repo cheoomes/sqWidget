@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto, Work_Sans } from "next/font/google";
-//import "./media/global.css";
+import "./media/global.css";
 import "@/app/media/widget2.css";
 
 const roboto = Roboto({
@@ -9,11 +9,11 @@ const roboto = Roboto({
     variable: "--sans", //css ref
     display: "swap",
 });
-const workSans = Work_Sans({
-    subsets: ["latin"],
-    weight: ["400", "500", "700"],
-    display: "swap",
-});
+// const workSans = Work_Sans({
+//     subsets: ["latin"],
+//     weight: ["400", "500", "700"],
+//     display: "swap",
+// });
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -27,9 +27,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${roboto.variable} ${workSans.className}`}>
-                {children}
-            </body>
+            <body className={`${roboto.className}`}>{children}</body>
         </html>
     );
 }
