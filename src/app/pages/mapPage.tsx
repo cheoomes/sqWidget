@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { GoogleMap, Marker, Autocomplete } from "@react-google-maps/api";
+import SearchBar from "../components/searchBar";
 
 const containerStyle = {
     width: "100%",
@@ -9,12 +10,18 @@ const containerStyle = {
     overflow: "hidden",
 };
 
-const defaultCenter = {
-    lat: 51.82724,
-    lng: 4.2509,
-};
+interface SearchMapProps {
+    searchAddress?: google.maps.places.PlaceResult;
+}
 
-export default function SearchMap() {
+export default function SearchMap({ searchAddress }: SearchMapProps) {
+    const defaultCenter = searchAddress?.geometry?.location
+        ? {
+              lat: searchAddress.geometry.location.lat(),
+              lng: searchAddress.geometry.location.lng(),
+          }
+        : { lat: 51.82724, lng: 4.2509 };
+
     const [center, setCenter] = useState(defaultCenter);
     const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(
         null
@@ -39,21 +46,21 @@ export default function SearchMap() {
     }, [center]);
 
     //not in use!!
-    const handleMarkerDragEnd = (e: google.maps.MapMouseEvent) => {
-        const newPos = {
-            lat: e.latLng?.lat() || center.lat,
-            lng: e.latLng?.lng() || center.lng,
-        };
-        setCenter(newPos);
+    // const handleMarkerDragEnd = (e: google.maps.MapMouseEvent) => {
+    //     const newPos = {
+    //         lat: e.latLng?.lat() || center.lat,
+    //         lng: e.latLng?.lng() || center.lng,
+    //     };
+    //     setCenter(newPos);
 
-        // reverse geocode
-        const geocoder = new window.google.maps.Geocoder();
-        geocoder.geocode({ location: newPos }, (results, status) => {
-            if (status === "OK" && results[0]) {
-                setAddress(results[0].formatted_address);
-            }
-        });
-    };
+    //     // reverse geocode
+    //     const geocoder = new window.google.maps.Geocoder();
+    //     geocoder.geocode({ location: newPos }, (results, status) => {
+    //         if (status === "OK" && results[0]) {
+    //             setAddress(results[0].formatted_address);
+    //         }
+    //     });
+    // };
 
     const mapOptions = {
         mapTypeId: "hybrid",
@@ -65,6 +72,8 @@ export default function SearchMap() {
 
     return (
         <div className="map-box">
+            <SearchBar onSubmit={handlePlaceChanged} />
+
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
@@ -83,7 +92,7 @@ export default function SearchMap() {
                 />
             </GoogleMap>
 
-            <div className="search">
+            {/* <div className="search">
                 <Autocomplete
                     onLoad={(autocomplete) =>
                         (autocompleteRef.current = autocomplete)
@@ -101,7 +110,7 @@ export default function SearchMap() {
                         }}
                     />
                 </Autocomplete>
-            </div>
+            </div> */}
         </div>
     );
 }

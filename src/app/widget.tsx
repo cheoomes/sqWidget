@@ -10,7 +10,11 @@ import { getSettings } from "./services/getSettings";
 
 import "./media/widget.css";
 
-export default function Widget() {
+interface SearchMapProps {
+    searchAddress?: google.maps.places.PlaceResult;
+}
+
+export default function Widget({ searchAddress }: SearchMapProps) {
     const [step, setStep] = useState<number>(1);
     const mesages: string[] = [
         "search house",
@@ -44,7 +48,9 @@ export default function Widget() {
             <div className="pages">
                 {/* {step === 0 ? <SolarWidgetLanding /> : null} */}
 
-                {step === 1 ? <SearchMap /> : null}
+                {step === 1 ? (
+                    <SearchMap searchAddress={searchAddress} />
+                ) : null}
 
                 {step === 2 ? <Usage /> : null}
 

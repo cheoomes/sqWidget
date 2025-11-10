@@ -8,6 +8,12 @@ import { useState } from "react";
 
 export default function Page() {
     const [inWidget, setInWidget] = useState(false);
+    const [search, setSearch] = useState<google.maps.places.PlaceResult>();
+
+    const startWidget = (address: google.maps.places.PlaceResult) => {
+        setSearch(address);
+        setInWidget(true);
+    };
 
     return (
         <div className="widget">
@@ -16,9 +22,9 @@ export default function Page() {
                 libraries={["places"]}
             >
                 {!inWidget ? (
-                    <PitchPage startWidget={() => setInWidget(true)} />
+                    <PitchPage startWidget={startWidget} />
                 ) : (
-                    <Widget />
+                    <Widget searchAddress={search} />
                 )}
             </LoadScript>
         </div>

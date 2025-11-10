@@ -3,7 +3,7 @@ import { Autocomplete } from "@react-google-maps/api";
 import SearchBar from "../components/searchBar";
 
 interface SolarWidgetLandingProps {
-    startWidget: () => void;
+    startWidget: (address: google.maps.places.PlaceResult) => void;
 }
 
 export default function SolarWidgetLanding({
@@ -20,8 +20,8 @@ export default function SolarWidgetLanding({
                     {/* Instantly check your roof’s solar potential — powered by
                     NASA solar data. */}
                 </p>
-                <SearchBar />
-                <div className="search-bar">
+                <SearchBar onSubmit={startWidget} />
+                {/* <div className="search-bar">
                     <Autocomplete
                     // onLoad={(autocomplete) =>
                     //     (autocompleteRef.current = autocomplete)
@@ -37,7 +37,7 @@ export default function SolarWidgetLanding({
                     <button onClick={startWidget} className="search-button">
                         Check My Roof
                     </button>
-                </div>
+                </div> */}
             </div>
             <div className="footer">
                 <div className="trust-indicators">
