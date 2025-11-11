@@ -33,10 +33,6 @@ export default function Widget({ searchAddress }: SearchMapProps) {
 
     return (
         <div>
-            {/* <p>
-                get an online solar quotation (estimate) within 30sec (no email
-                or phonenumber requird)
-            </p> */}
             {/* <div className="progress-content"> */}
             <ProgressBar
                 step={step}

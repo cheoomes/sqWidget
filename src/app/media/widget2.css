@@ -19,33 +19,6 @@
     padding: 20px;
 }
 
-/* map */
-.map-box {
-    width: 100%;
-    position: relative; /* allows absolute children */
-    border-radius: 10%;
-
-    margin-left: 100px;
-    margin-right: 100px;
-}
-
-@media (max-width: 768px) {
-    .map-box {
-        margin-left: 0;
-        margin-right: 0;
-    }
-}
-
-.search {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    width: 80%;
-    max-width: 400px;
-}
-
 .search input {
     background-color: rgba(255, 255, 255, 0.9);
     width: 100%;
@@ -71,60 +44,6 @@
     .progress-page {
         width: 92%;
     }
-}
-
-.progress-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    position: relative;
-}
-
-.progress-container::before {
-    /* psuedo element, for extra line in background  */
-    content: "";
-    position: absolute;
-    background-color: var(--gray);
-    height: 8px;
-    width: 100%;
-
-    /*positioning - logo, than logo up half own height to centre*/
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-}
-
-.progress {
-    background-color: var(--progress-color);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 8px;
-    transition: all 0.3s ease-in;
-    z-index: 2;
-}
-
-.step {
-    background-color: var(--gray);
-    border-radius: 50%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 45px;
-    width: 45px;
-    z-index: 2;
-}
-
-.step.active {
-    background-color: var(--progress-color);
-}
-.logo {
-    background-color: inherit;
-    color: var(--text);
-    height: 30px;
-    width: 30px;
 }
 
 .btns {

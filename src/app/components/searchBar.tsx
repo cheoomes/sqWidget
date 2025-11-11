@@ -1,15 +1,18 @@
 import { Autocomplete } from "@react-google-maps/api";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "../media/pitchPage.css";
 
 interface SearchBarProps {
     onSubmit: (address: google.maps.places.PlaceResult) => void;
+    // optional initial PlaceResult so the component is immediately ready to submit
+    initialPlace?: google.maps.places.PlaceResult;
 }
 
-export default function SearchBar({ onSubmit }: SearchBarProps) {
+export default function SearchBar({ onSubmit, initialPlace }: SearchBarProps) {
     const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(
         null
     );
+    const inputRef = useRef<HTMLInputElement | null>(null);
     const [address, setAddress] =
         useState<google.maps.places.PlaceResult | null>(null);
 
@@ -33,6 +36,18 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
         }
     };
 
+    // If parent passes an initial PlaceResult, set the internal address state
+    // and prefill the input so the component can submit immediately.
+    useEffect(() => {
+        if (initialPlace) {
+            setAddress(initialPlace);
+            if (inputRef.current) {
+                inputRef.current.value =
+                    initialPlace.formatted_address ?? initialPlace.name ?? "";
+            }
+        }
+    }, [initialPlace]);
+
     const handleSubmit = () => {
         if (!address || !address.formatted_address) return;
         onSubmit(address);
@@ -50,8 +65,9 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
                     type="text"
                     placeholder="Enter your address..."
                     className="search-input"
-                    // value={address}
-                    //onChange={(e) => setAddress(e.target.value)}
+                    ref={inputRef}
+                    // Use defaultValue so Autocomplete can still control the input.
+                    defaultValue={initialPlace?.formatted_address ?? initialPlace?.name}
                     onKeyDown={(e) => {
                         if (e.key === "Enter") {
                             e.preventDefault();

@@ -13,33 +13,15 @@ export default function SolarWidgetLanding({
         <div className="solar-landing">
             <div className="content">
                 <h1 className="hero-title">
-                    Get a free solar quatation, right now
+                    Get an online solar quotation (estimate) within 30sec
                 </h1>
-                <p className="hero-subtitle">
-                    completely online, within 30 seconds
-                    {/* Instantly check your roof’s solar potential — powered by
-                    NASA solar data. */}
-                </p>
+                <p className="hero-subtitle">no email or phonenumber requird</p>
                 <SearchBar onSubmit={startWidget} />
-                {/* <div className="search-bar">
-                    <Autocomplete
-                    // onLoad={(autocomplete) =>
-                    //     (autocompleteRef.current = autocomplete)
-                    // }
-                    //onPlaceChanged={handlePlaceChanged}
-                    >
-                        <input
-                            type="text"
-                            placeholder="Enter your address..."
-                            className="search-input"
-                        />
-                    </Autocomplete>
-                    <button onClick={startWidget} className="search-button">
-                        Check My Roof
-                    </button>
-                </div> */}
             </div>
             <div className="footer">
+                {/* logo from CSS variable --logo (set via getSettings) */}
+                <div className="footer-logo" aria-hidden="true" />
+
                 <div className="trust-indicators">
                     <span className="indicator">✓ Uses NASA Solar Data</span>
                     <span className="indicator">✓ Privacy Guaranteed</span>

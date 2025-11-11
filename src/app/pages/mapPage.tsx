@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { GoogleMap, Marker, Autocomplete } from "@react-google-maps/api";
 import SearchBar from "../components/searchBar";
+import "../media/mapPage.css";
 
 const containerStyle = {
     width: "100%",
@@ -27,17 +28,16 @@ export default function SearchMap({ searchAddress }: SearchMapProps) {
         null
     );
 
-    //from search
-    const handlePlaceChanged = () => {
-        //console.log(autocompleteRef.current);
-        if (autocompleteRef.current !== null) {
-            const place = autocompleteRef.current.getPlace();
-            if (place.geometry && place.geometry.location) {
-                setCenter({
-                    lat: place.geometry.location.lat(),
-                    lng: place.geometry.location.lng(),
-                });
-            }
+    // from SearchBar: receive the PlaceResult directly
+    const handlePlaceChanged = (
+        place?: google.maps.places.PlaceResult | null
+    ) => {
+        const p = place ?? null;
+        if (p && p.geometry && p.geometry.location) {
+            setCenter({
+                lat: p.geometry.location.lat(),
+                lng: p.geometry.location.lng(),
+            });
         }
     };
 
@@ -72,45 +72,33 @@ export default function SearchMap({ searchAddress }: SearchMapProps) {
 
     return (
         <div className="map-box">
-            <SearchBar onSubmit={handlePlaceChanged} />
-
-            <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={center}
-                zoom={17}
-                options={mapOptions}
-            >
-                <Marker
-                    position={center}
-                    draggable={true}
-                    onDragEnd={(e) =>
-                        setCenter({
-                            lat: e.latLng?.lat() || center.lat,
-                            lng: e.latLng?.lng() || center.lng,
-                        })
-                    }
+            <div className="instructions-side">
+                <SearchBar
+                    onSubmit={handlePlaceChanged}
+                    initialPlace={searchAddress}
                 />
-            </GoogleMap>
+            </div>
 
-            {/* <div className="search">
-                <Autocomplete
-                    onLoad={(autocomplete) =>
-                        (autocompleteRef.current = autocomplete)
-                    }
-                    onPlaceChanged={handlePlaceChanged}
+            <div className="map-side">
+                {" "}
+                <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={center}
+                    zoom={17}
+                    options={mapOptions}
                 >
-                    <input
-                        type="text"
-                        placeholder="adress ..."
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter") {
-                                e.preventDefault(); // prevent dropdown from closing
-                                handlePlaceChanged(); // still handle the selected place
-                            }
-                        }}
+                    <Marker
+                        position={center}
+                        draggable={true}
+                        onDragEnd={(e) =>
+                            setCenter({
+                                lat: e.latLng?.lat() || center.lat,
+                                lng: e.latLng?.lng() || center.lng,
+                            })
+                        }
                     />
-                </Autocomplete>
-            </div> */}
+                </GoogleMap>
+            </div>
         </div>
     );
 }

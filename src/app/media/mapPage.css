@@ -1,0 +1,20 @@
+/* map */
+.map-box {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    /* position: relative; allows absolute children
+    border-radius: 10%;
+
+    margin-left: 100px;
+    margin-right: 100px; */
+}
+
+@media (max-width: 768px) {
+    .map-box {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

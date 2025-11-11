@@ -17,3 +17,58 @@
 
     background-color: var(--bg);
 }
+
+.progress-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    position: relative;
+}
+
+.progress-container::before {
+    /* psuedo element, for extra line in background  */
+    content: "";
+    position: absolute;
+    background-color: var(--progress-shadow-color);
+    height: 8px;
+    width: 100%;
+
+    /*positioning - logo, than logo up half own height to centre*/
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.step {
+    background-color: var(--gray);
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 45px;
+    z-index: 2;
+}
+
+.step.active {
+    background-color: var(--progress-color);
+}
+
+.logo {
+    background-color: inherit;
+    color: var(--text);
+    height: 30px;
+    width: 30px;
+}
+
+.progress {
+    background-color: var(--progress-color);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 8px;
+    transition: all 0.3s ease-in;
+    z-index: 2;
+}
