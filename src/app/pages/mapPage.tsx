@@ -5,7 +5,8 @@ import "../media/mapPage.css";
 
 const containerStyle = {
     width: "100%",
-    height: "400px",
+    height: "350px",
+    maxHeight: "50vh",
     border: "2px solid #ccc",
     borderRadius: "12px",
     overflow: "hidden",
@@ -71,15 +72,16 @@ export default function SearchMap({ searchAddress }: SearchMapProps) {
     };
 
     return (
-        <div className="map-box">
+        <div className="map-page">
             <div className="instructions-side">
+                <p>drag the marker to your roof,</p>
                 <SearchBar
                     onSubmit={handlePlaceChanged}
                     initialPlace={searchAddress}
                 />
             </div>
 
-            <div className="map-side">
+            <div className="map-box">
                 {" "}
                 <GoogleMap
                     mapContainerStyle={containerStyle}

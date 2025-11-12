@@ -1,5 +1,4 @@
 "use client";
-import "./media/widget2.css";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 import Widget from "./widget";
@@ -16,7 +15,7 @@ export default function Page() {
     };
 
     return (
-        <div className="widget">
+        <div>
             <LoadScript
                 googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}
                 libraries={["places"]}

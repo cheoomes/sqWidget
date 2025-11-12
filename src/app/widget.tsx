@@ -32,7 +32,7 @@ export default function Widget({ searchAddress }: SearchMapProps) {
     };
 
     return (
-        <div>
+        <div className="widget">
             {/* <div className="progress-content"> */}
             <ProgressBar
                 step={step}

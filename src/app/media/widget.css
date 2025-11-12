@@ -1,28 +1,30 @@
 @import "global.css";
 
 .widget {
+    /* Widget container - layout, positioning, background, padding */
+    min-height: 100vh;
+    width: 100%;
+    padding: 3.5rem;
+    box-sizing: border-box;
+    background-color: var(--background-color);
+    position: relative;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 2rem;
+}
 
-    min-height: 100vh;
-    /* max-width: 600px; */
-    /* width: 100%; */
-
-    /* border-radius: 15px; */
-    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); */
-
-    padding: 3.5rem;
-    overflow: hidden;
-
-    background-color: var(--bg);
+.progress-bar {
+    width: 90%;
+    align-self: center;
 }
 
 .progress-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    width: 100%;
     position: relative;
 }
 
@@ -41,15 +43,16 @@
 }
 
 .step {
-    background-color: var(--gray);
+    background-color: var(--progress-shadow-color);
     border-radius: 50%;
-
     display: flex;
     justify-content: center;
     align-items: center;
     height: 45px;
     width: 45px;
     z-index: 2;
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 .step.active {
@@ -57,10 +60,11 @@
 }
 
 .logo {
-    background-color: inherit;
-    color: var(--text);
+    /* background-color: inherit; */
+    color: var(--background-color);
     height: 30px;
     width: 30px;
+    stroke-width: 1;
 }
 
 .progress {
@@ -71,4 +75,45 @@
     height: 8px;
     transition: all 0.3s ease-in;
     z-index: 2;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    padding: 1rem 0;
+}
+
+.btn {
+    background-color: var(--progress-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 4px;
+    padding: 4px 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    background-color: color-mix(in srgb, var(--progress-color) 90%, black);
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn.disabled {
+    cursor: not-allowed;
+    opacity: 0.9;
+    background-color: #ddd;
+}
+
+.pages {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
 }

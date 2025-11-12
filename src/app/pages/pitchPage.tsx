@@ -19,8 +19,7 @@ export default function SolarWidgetLanding({
                 <SearchBar onSubmit={startWidget} />
             </div>
             <div className="footer">
-                {/* logo from CSS variable --logo (set via getSettings) */}
-                <div className="footer-logo" aria-hidden="true" />
+                {/* <div className="footer-logo" aria-hidden="true" /> */}
 
                 <div className="trust-indicators">
                     <span className="indicator">✓ Uses NASA Solar Data</span>

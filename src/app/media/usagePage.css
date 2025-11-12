@@ -1,19 +1,16 @@
 .energy-form {
     width: 100%;
-    max-width: 400px;
-    padding: 2rem;
-}
 
-.energy-form h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #333;
+    padding-left: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .form-group {
     margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 400px;
 }
 
 .form-group label {

@@ -3,7 +3,7 @@ import { HomeIcon, CogIcon, UserIcon } from "@heroicons/react/24/outline";
 import Progress from "./progress";
 
 //import "../media/global.css";
-//import "../media/widget.css";
+import "../media/widget.css";
 
 interface ProgressBarProps {
     step: number;
@@ -17,7 +17,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ step, totalSteps, msg }) => {
     }
 
     return (
-        <div className="progress-page">
+        <div className="progress-bar">
             <div className="progress-container">
                 <Progress totalSteps={totalSteps} step={step} />
 

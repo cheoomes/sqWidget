@@ -36,41 +36,16 @@
 }
 
 .progress-page {
-    width: 80%;
+    width: 100%;
     /* max-width: 1200px; */
     /* margin: 0 auto; */
 }
+
 @media (max-width: 768px) {
     .progress-page {
-        width: 92%;
+        width: 100%;
     }
-}
-
-.btns {
-    /* position: absolute; */
-    bottom: 0;
-
-    display: flex;
-    justify-content: center;
-    margin: 1rem 0;
-}
-
-.btn {
-    background-color: var(--progress-color);
-    color: var(--text);
-
-    border-radius: 4px;
-    padding: 4px 40px;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.btn:active {
-    transform: scale(0.98);
-}
-
-.btn.disabled {
-    cursor: not-allowed;
-    opacity: 0.9;
-    background-color: #ddd;
+    /* .progress-bar {
+        width: 100%;
+    } */
 }
