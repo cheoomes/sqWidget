@@ -51,7 +51,9 @@ export default function LeadForm({
                 <div className="success-icon">✓</div>
                 <h3>Thank You!</h3>
                 <p>
-                    We've received your information and one of our solar experts will be in contact with you shortly to discuss your personalized quote.
+                    We've received your information and one of our solar experts
+                    will be in contact with you shortly to discuss your
+                    personalized quote.
                 </p>
             </div>
         );
@@ -59,10 +61,11 @@ export default function LeadForm({
 
     return (
         <form className="contact-form cta-box" onSubmit={handleSubmit}>
-            <h3>Talk to one of our Experts</h3>
+            <h3>get a real quote from an expert</h3>
             <p>
-                Have one of our experts look at your particular situation and
-                provide you with an price quote tailored to your home.
+                one of our experts will look at your particular situation and
+                provide you with an price quote and advice tailored to your
+                home.
             </p>
 
             <div className="form-group">
