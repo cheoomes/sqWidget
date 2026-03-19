@@ -17,11 +17,11 @@ export default function SearchBar({ onSubmit, initialPlace }: SearchBarProps) {
         useState<google.maps.places.PlaceResult | null>(null);
 
     const autocompleteOptions: google.maps.places.AutocompleteOptions = {
-        componentRestrictions: { country: ["nl"] },
+        componentRestrictions: { country: ["us"] },
         fields: ["geometry", "name", "formatted_address"],
         locationBias: {
-            center: { lat: 51.822, lng: 4.2593 },
-            radius: 150000, // meters
+            center: { lat: 27.9944, lng: -81.7603 },
+            radius: 300000, // meters
         },
     } as any;
 
@@ -67,7 +67,9 @@ export default function SearchBar({ onSubmit, initialPlace }: SearchBarProps) {
                     className="search-input"
                     ref={inputRef}
                     // Use defaultValue so Autocomplete can still control the input.
-                    defaultValue={initialPlace?.formatted_address ?? initialPlace?.name}
+                    defaultValue={
+                        initialPlace?.formatted_address ?? initialPlace?.name
+                    }
                     onKeyDown={(e) => {
                         if (e.key === "Enter") {
                             e.preventDefault();

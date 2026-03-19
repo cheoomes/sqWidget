@@ -13,9 +13,12 @@ export default function SolarWidgetLanding({
         <div className="solar-landing">
             <div className="content">
                 <h1 className="hero-title">
-                    Get an online solar quotation (estimate) within 30sec
+                    {" "}
+                    get an estimated solar quote in 30 sec
                 </h1>
-                <p className="hero-subtitle">no email or phonenumber requird</p>
+                <p className="hero-subtitle">
+                    completely online, no email or phonenumber requird
+                </p>
                 <SearchBar onSubmit={startWidget} />
             </div>
             <div className="footer">

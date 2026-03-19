@@ -22,6 +22,7 @@ export default function LeadForm({
         email: "",
         phone: "",
     });
+    const [submitted, setSubmitted] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -31,20 +32,38 @@ export default function LeadForm({
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        await createLead({
-            ...formData,
-            location: `${lat},${lng}`,
-            quote,
-            energyConsumption,
-            bill,
-        });
+        // TODO: Uncomment when backend is ready
+        // await createLead({
+        //     ...formData,
+        //     location: `${lat},${lng}`,
+        //     quote,
+        //     energyConsumption,
+        //     bill,
+        // });
 
+        setSubmitted(true);
         setFormData({ name: "", email: "", phone: "" }); // clear form
     };
 
+    if (submitted) {
+        return (
+            <div className="contact-form cta-box success-message">
+                <div className="success-icon">✓</div>
+                <h3>Thank You!</h3>
+                <p>
+                    We've received your information and one of our solar experts will be in contact with you shortly to discuss your personalized quote.
+                </p>
+            </div>
+        );
+    }
+
     return (
-        <form className="contact-form" onSubmit={handleSubmit}>
-            <h2>Contact Information</h2>
+        <form className="contact-form cta-box" onSubmit={handleSubmit}>
+            <h3>Talk to one of our Experts</h3>
+            <p>
+                Have one of our experts look at your particular situation and
+                provide you with an price quote tailored to your home.
+            </p>
 
             <div className="form-group">
                 <label>Name</label>
@@ -81,7 +100,10 @@ export default function LeadForm({
                     placeholder="+1 234 567 890"
                 />
             </div>
-            <button type="submit">Submit</button>
+
+            <button type="submit" className="btn-primary btn-large">
+                Talk to one of our Experts
+            </button>
         </form>
     );
 }

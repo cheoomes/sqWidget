@@ -1,0 +1,478 @@
+.cog {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #ccc;
+    border-top: 6px solid #1d72b8;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* keyframes for spinning animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.resultsPage {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.results-top {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.chart-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--light-text-color);
+}
+
+.solarGraph {
+    flex: 1.5;
+}
+
+.solarGraph h3 {
+    margin-left: 55px;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--light-text-color);
+}
+
+.results-math {
+    margin-top: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 0;
+}
+
+.results-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 0.85rem;
+    max-width: 500px;
+    margin-top: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.results-form .pitch {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--light-text-color);
+    margin-bottom: 0.5rem;
+}
+
+.results-form .contact-form h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.results-form .contact-form label {
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+}
+
+.results-form .contact-form input {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+}
+
+.results-form .contact-form button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.5rem;
+}
+
+.sum {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 168, 99, 0.04),
+        rgba(0, 168, 99, 0.02)
+    );
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    opacity: 0;
+    transform: translateY(6px);
+    animation: sumFadeIn 420ms ease forwards 120ms;
+}
+
+@keyframes sumFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.price-estimate {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--progress-color);
+}
+
+.sum p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+.sum strong {
+    color: var(--progress-color);
+    font-weight: 700;
+}
+
+/* conclusion card */
+.conclusion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 168, 99, 0.08),
+        rgba(0, 168, 99, 0.02)
+    );
+    padding: 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 168, 99, 0.12);
+    border: 2px solid var(--progress-color);
+    max-width: 360px;
+    align-self: flex-start;
+    margin-top: -8px; /* raise slightly */
+}
+
+.conclusion-main {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.conclusion-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.conclusion-icon {
+    width: 44px;
+    height: 44px;
+    color: rgba(0, 168, 99, 1); /* sun green */
+    flex-shrink: 0;
+}
+
+.conclusion-label {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.conclusion-value-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.conclusion-value {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--progress-color);
+}
+
+.conclusion-value-wrap svg {
+    margin-left: 8px;
+}
+
+.conclusion-sub {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.conclusion-note {
+    font-size: 0.85rem;
+    color: var(--light-text-color);
+}
+
+.conclusion-merged {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    line-height: 1.4;
+}
+
+.btn-primary {
+    background: var(--progress-color);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 0.95rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 168, 99, 0.12);
+}
+
+.conclusion-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.conclusion-footer .conclusion-note {
+    text-align: center;
+    line-height: 1.6;
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: var(--progress-color);
+    font-size: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 4px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: all 0.2s ease;
+    display: inline;
+}
+
+.link-button:hover {
+    background: rgba(0, 168, 99, 0.1);
+    text-decoration: none;
+    transform: translateX(2px);
+}
+
+.btn-scroll {
+    font-size: 1rem;
+    padding: 0.75rem 1.75rem;
+    box-shadow: 0 6px 20px rgba(0, 168, 99, 0.2);
+    transition: all 0.2s ease;
+}
+
+.btn-scroll:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 168, 99, 0.3);
+}
+
+.cta-box {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 168, 99, 0.08),
+        rgba(0, 168, 99, 0.02)
+    );
+    border: 2px solid var(--progress-color);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 24px rgba(0, 168, 99, 0.12);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-box h3 {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--progress-color);
+}
+
+.cta-box p {
+    margin: 0 0 1.5rem 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.cta-box .form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.cta-box .form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: var(--text-color);
+}
+
+.cta-box .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgba(0, 168, 99, 0.3);
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+.cta-box .form-group input:focus {
+    outline: none;
+    border-color: var(--progress-color);
+    box-shadow: 0 0 0 3px rgba(0, 168, 99, 0.1);
+}
+
+.btn-large {
+    font-size: 1.1rem;
+    padding: 0.85rem 2rem;
+    box-shadow: 0 8px 24px rgba(0, 168, 99, 0.25);
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.btn-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 168, 99, 0.35);
+}
+
+.success-message {
+    animation: fadeInScale 0.5s ease-out;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--progress-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0 auto 1rem auto;
+    animation: scaleIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.success-message h3 {
+    color: var(--progress-color);
+    margin-bottom: 1rem;
+}
+
+.success-message p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .conclusion {
+        max-width: 100%;
+    }
+}
+
+.pitch {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--light-text-color);
+}
+
+@media (max-width: 768px) {
+    .resultsPage {
+        flex-direction: column;
+    }
+
+    .results-form {
+        width: 100%;
+    }
+
+    .sum {
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* equation */
+.comment {
+    font-size: 0.8em;
+    color: var(--light-text-color);
+    font-style: italic;
+}
+
+.equation {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between fraction and result */
+}
+
+.numerator,
+.denominator {
+    display: block;
+    text-align: center;
+}
+
+.equals {
+    margin-left: 10px;
+}
+
+/* Spinner animation for waiting state */
+.spinner {
+    animation: spin 1s linear infinite;
+    display: block;
+    margin: 0 auto 1rem auto;
+}
+
+/* Make chart axis tick labels use the global light text color.
+   Target cartesian axis ticks specifically so other SVG text
+   (like ReferenceLine labels) is not affected. */
+.resultsPage .recharts-cartesian-axis-tick text,
+.resultsPage .recharts-xAxis text,
+.resultsPage .recharts-yAxis text {
+    fill: var(--light-text-color);
+}
+
+.resultsPage .price-estimate,
+.resultsPage .numerator,
+.resultsPage .denominator,
+.resultsPage .equals {
+    color: var(--light-text-color);
+}

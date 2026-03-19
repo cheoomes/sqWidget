@@ -26,12 +26,12 @@ export default function SearchMap({ searchAddress }: SearchMapProps) {
 
     const [center, setCenter] = useState(defaultCenter);
     const autocompleteRef = useRef<google.maps.places.Autocomplete | null>(
-        null
+        null,
     );
 
     // from SearchBar: receive the PlaceResult directly
     const handlePlaceChanged = (
-        place?: google.maps.places.PlaceResult | null
+        place?: google.maps.places.PlaceResult | null,
     ) => {
         const p = place ?? null;
         if (p && p.geometry && p.geometry.location) {
@@ -74,7 +74,7 @@ export default function SearchMap({ searchAddress }: SearchMapProps) {
     return (
         <div className="map-page">
             <div className="instructions-side">
-                <p>drag the marker to your roof,</p>
+                <p>please drag the marker onto your roof, and press "next"</p>
                 <SearchBar
                     onSubmit={handlePlaceChanged}
                     initialPlace={searchAddress}

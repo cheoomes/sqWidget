@@ -4,15 +4,18 @@ export async function getEstimate(
     lng: undefined
 ) {
     try {
-        const response = await fetch("http://localhost:3000/api/getEstimate", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                usage: usage,
-                lat: lat,
-                lng: lng,
-            }),
-        });
+        const response = await fetch(
+            "http://localhost:3000/api/public/getEstimate",
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    usage: usage,
+                    lat: lat,
+                    lng: lng,
+                }),
+            }
+        );
 
         const data = await response.json();
 

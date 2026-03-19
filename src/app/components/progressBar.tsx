@@ -1,4 +1,4 @@
-import { HomeIcon, CogIcon, UserIcon } from "@heroicons/react/24/outline";
+import { HomeIcon, BoltIcon, SunIcon } from "@heroicons/react/24/outline";
 
 import Progress from "./progress";
 
@@ -25,10 +25,10 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ step, totalSteps, msg }) => {
                     <HomeIcon className="logo" />
                 </div>
                 <div className={`${step >= 2 ? "step active" : "step"}`}>
-                    <UserIcon className="logo" />
+                    <BoltIcon className="logo" />
                 </div>
                 <div className={`${step >= 3 ? "step active" : "step"}`}>
-                    <CogIcon className="logo" />
+                    <SunIcon className="logo" />
                 </div>
             </div>
 

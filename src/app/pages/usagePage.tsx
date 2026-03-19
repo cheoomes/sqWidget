@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../media/usagePage.css";
 
 function usage() {
-    const [usage, setUsage] = useState<number | null>(4200);
+    const [usage, setUsage] = useState<number | null>(null);
     const [cost, setCost] = useState<number | null>(null);
 
     useEffect(() => {
@@ -12,17 +12,21 @@ function usage() {
     return (
         <form className="energy-form">
             <div className="form-group">
-                <label>How many KWH do you use anually?</label>
+                <label>
+                    What is your household's annual energy consumption? (in KWH)
+                </label>
                 <input
                     type="number"
                     value={usage ?? ""}
                     onChange={(e) =>
                         setUsage(
-                            e.target.value ? parseInt(e.target.value, 10) : null
+                            e.target.value
+                                ? parseInt(e.target.value, 10)
+                                : null,
                         )
                     }
                     required
-                    placeholder="e.g. 350"
+                    placeholder="e.g. 4200 kWh"
                 />
             </div>
 
@@ -36,7 +40,9 @@ function usage() {
                     value={cost ?? ""}
                     onChange={(e) =>
                         setCost(
-                            e.target.value ? parseInt(e.target.value, 10) : null
+                            e.target.value
+                                ? parseInt(e.target.value, 10)
+                                : null,
                         )
                     }
                     placeholder="e.g. 120"
