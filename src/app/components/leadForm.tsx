@@ -33,13 +33,13 @@ export default function LeadForm({
         e.preventDefault();
 
         // TODO: Uncomment when backend is ready
-        // await createLead({
-        //     ...formData,
-        //     location: `${lat},${lng}`,
-        //     quote,
-        //     energyConsumption,
-        //     bill,
-        // });
+        await createLead({
+            ...formData,
+            location: `${lat},${lng}`,
+            quote,
+            energyConsumption,
+            bill,
+        });
 
         setSubmitted(true);
         setFormData({ name: "", email: "", phone: "" }); // clear form

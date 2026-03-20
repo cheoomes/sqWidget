@@ -22,11 +22,8 @@ export async function createLead(leadData: LeadData) {
                     "Content-Type": "application/json",
                     "x-api-key": apiKey, // include API key for client identification
                 },
-                body: JSON.stringify({
-                    ...leadData,
-                    apiKey, // 👈 key is in the body
-                }),
-            }
+                body: JSON.stringify(leadData),
+            },
         );
 
         if (!response.ok) {
