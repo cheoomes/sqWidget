@@ -61,11 +61,10 @@ export default function LeadForm({
 
     return (
         <form className="contact-form cta-box" onSubmit={handleSubmit}>
-            <h3>get a real quote from an expert</h3>
+            <h3>get a personalised quote from an expert</h3>
             <p>
-                one of our experts will look at your particular situation and
-                provide you with an price quote and advice tailored to your
-                home.
+                one of our experts will review your specific situation and
+                provide a tailored quote, along with advice suited to your home.
             </p>
 
             <div className="form-group">

@@ -1,4 +1,3 @@
-import { error } from "console";
 import React, { useEffect, useState } from "react";
 import { getEstimate } from "../services/estimate";
 import {
@@ -122,13 +121,14 @@ function Results() {
                     </div>
                 </div>
                 <div className="note">
-                    this is based on your average energy consumption and the
-                    solar irradiance in your area.
+                    this estimate is based on your average energy usage and the
+                    solar potential in your area.
                     <br />
                     <br />
-                    there are many more factors which need considering,
+                    to give you the most accurate quote, we take a few
+                    additional factors into account.
                     <button className="link-button" onClick={handleScroll}>
-                        talk to an experts and get a real quote →
+                        speak with an experts to get a personalised quote →
                     </button>
                     {/* The actual production can vary based on factors like roof
                     tilt, shading, and seasonal changes.  The tilt of the
@@ -138,8 +138,8 @@ function Results() {
             </div>
             <div className="solarGraph">
                 <h3>
-                    the estimated daily energy production of a{" "}
-                    {quote.toFixed(2)} kW system, in your area:
+                    estimated daily energy production for a {quote.toFixed(2)}{" "}
+                    kW system, in your area:
                 </h3>
                 <ResponsiveContainer width="100%" height={220}>
                     <AreaChart data={monthlyProduction}>
@@ -185,7 +185,7 @@ function Results() {
                 </ResponsiveContainer>
 
                 <div className="chart-caption">
-                    Average: {avgProduction.toFixed(2)} kWh/day produced
+                    Average production: {avgProduction.toFixed(2)} kWh/day
                 </div>
             </div>
 
