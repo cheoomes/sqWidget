@@ -6,6 +6,10 @@ import PitchPage from "./pages/pitchPage";
 import { useState } from "react";
 
 export default function Page() {
+    console.log(
+        "Google Maps API Key:",
+        process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    );
     const [inWidget, setInWidget] = useState(false);
     const [search, setSearch] = useState<google.maps.places.PlaceResult>();
 

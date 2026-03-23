@@ -15,7 +15,7 @@ export async function createLead(leadData: LeadData) {
 
     try {
         const response = await fetch(
-            "http://localhost:3000/api/public/putQuote",
+            "https://solariq.app/api/public/putQuote",
             {
                 method: "PUT",
                 headers: {

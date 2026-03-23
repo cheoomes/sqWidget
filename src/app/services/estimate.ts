@@ -1,11 +1,11 @@
 export async function getEstimate(
     usage: undefined,
     lat: undefined,
-    lng: undefined
+    lng: undefined,
 ) {
     try {
         const response = await fetch(
-            "http://localhost:3000/api/public/getEstimate",
+            "https://solariq.app/api/public/getEstimate",
             {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -14,7 +14,7 @@ export async function getEstimate(
                     lat: lat,
                     lng: lng,
                 }),
-            }
+            },
         );
 
         const data = await response.json();

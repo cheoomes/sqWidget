@@ -4,7 +4,7 @@ export async function getSettings() {
     const apiKey = getApiKey();
 
     const res = await fetch(
-        `http://localhost:3000/api/public/getSettings?apiKey=${apiKey}`
+        `https://solariq.app/api/public/getSettings?apiKey=${apiKey}`,
     );
     if (!res.ok) throw new Error("Failed to load settings");
 
@@ -26,18 +26,18 @@ export async function getSettings() {
         root.style.setProperty("--progress-color", data.progresColor);
         root.style.setProperty(
             "--progress-shadow-color",
-            data.progresShadowColor
+            data.progresShadowColor,
         );
         root.style.setProperty("--text-color", data.textColor);
         root.style.setProperty("--light-text-color", data.LightTextColor);
         root.style.setProperty(
             "--show-avg-line",
-            data.showAvgLine ? "true" : "false"
+            data.showAvgLine ? "true" : "false",
         );
         if (data.logo) {
             root.style.setProperty(
                 "--logo",
-                `url(data:image/png;base64,${data.logo})`
+                `url(data:image/png;base64,${data.logo})`,
             );
         }
     }
