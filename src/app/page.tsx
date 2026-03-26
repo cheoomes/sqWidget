@@ -3,6 +3,8 @@ import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 import Widget from "./widget";
 import PitchPage from "./pages/pitchPage";
+
+const GOOGLE_MAPS_LIBRARIES: "places"[] = ["places"];
 import { useState } from "react";
 
 export default function Page() {
@@ -19,7 +21,7 @@ export default function Page() {
         <div>
             <LoadScript
                 googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}
-                libraries={["places"]}
+                libraries={GOOGLE_MAPS_LIBRARIES}
             >
                 {!inWidget ? (
                     <PitchPage startWidget={startWidget} />
