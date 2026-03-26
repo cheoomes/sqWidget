@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Spinner from "./Spinner";
 import { createLead } from "../services/createLead";
 
 //adress
@@ -23,6 +24,7 @@ export default function LeadForm({
         phone: "",
     });
     const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -31,18 +33,20 @@ export default function LeadForm({
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
-        // TODO: Uncomment when backend is ready
-        await createLead({
-            ...formData,
-            location: `${lat},${lng}`,
-            quote,
-            energyConsumption,
-            bill,
-        });
-
-        setSubmitted(true);
-        setFormData({ name: "", email: "", phone: "" }); // clear form
+        setLoading(true);
+        try {
+            await createLead({
+                ...formData,
+                location: `${lat},${lng}`,
+                quote,
+                energyConsumption,
+                bill,
+            });
+            setSubmitted(true);
+            setFormData({ name: "", email: "", phone: "" }); // clear form
+        } finally {
+            setLoading(false);
+        }
     };
 
     if (submitted) {
@@ -76,6 +80,7 @@ export default function LeadForm({
                     onChange={handleChange}
                     required
                     placeholder="Your full name"
+                    disabled={loading}
                 />
             </div>
 
@@ -88,6 +93,7 @@ export default function LeadForm({
                     onChange={handleChange}
                     required
                     placeholder="you@example.com"
+                    disabled={loading}
                 />
             </div>
 
@@ -100,11 +106,22 @@ export default function LeadForm({
                     onChange={handleChange}
                     required
                     placeholder="+1 234 567 890"
+                    disabled={loading}
                 />
             </div>
 
-            <button type="submit" className="btn-primary btn-large">
-                Talk to one of our Experts
+            <button
+                type="submit"
+                className="btn-primary btn-large"
+                disabled={loading}
+            >
+                {loading ? (
+                    <>
+                        <Spinner /> Submitting...
+                    </>
+                ) : (
+                    "Talk to one of our Experts"
+                )}
             </button>
         </form>
     );
